@@ -1,0 +1,62 @@
+# Activity 1: Class Design
+
+class Smartphone:
+    def __init__(self, brand, model, price):
+        self.brand = brand
+        self.model = model
+        self.price = price
+
+    def show_details(self):
+        return f"Brand: {self.brand}, Model: {self.model}, Price: ${self.price}"
+
+    def call(self, number):
+        return f"Calling {number} from {self.model}..."
+
+# Inheritance Example: Adding a subclass for Gaming Smartphone
+class GamingPhone(Smartphone):
+    def __init__(self, brand, model, price, cooling_system):
+        super().__init__(brand, model, price)  # Call parent constructor
+        self.cooling_system = cooling_system
+
+    def show_details(self):
+        # Overriding the method (Polymorphism in action)
+        return f"Brand: {self.brand}, Model: {self.model}, Price: ${self.price}, Cooling: {self.cooling_system}"
+
+    def play_game(self, game):
+        return f"Playing {game} on {self.model} with {self.cooling_system} cooling system!"
+        
+
+# Testing the classes
+phone1 = Smartphone("Apple", "iPhone 14", 1200)
+phone2 = GamingPhone("Asus", "ROG Phone 6", 1500, "Liquid Cooling")
+
+print(phone1.show_details())
+print(phone1.call("+123456789"))
+print(phone2.show_details())
+print(phone2.play_game("PUBG"))
+
+
+
+# Activity 2: Polymorphism with move()
+
+class Vehicle:
+    def move(self):
+        return "Vehicle is moving..."
+
+class Car(Vehicle):
+    def move(self):
+        return "Driving"
+
+class Plane(Vehicle):
+    def move(self):
+        return "Flying"
+
+class Boat(Vehicle):
+    def move(self):
+        return "Sailing"
+
+# Testing polymorphism
+vehicles = [Car(), Plane(), Boat()]
+
+for v in vehicles:
+    print(v.move())
